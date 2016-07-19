@@ -1,4 +1,4 @@
-from .symbols import HIRAGANA_MAP, COMPOUND_HIRAGANA_MAP, DOUBLE_CONS_HIRAGANA_MAP
+from .symbols import HIRAGANA_MAP
 
 from cached_property import cached_property
 from kao_symbols import convert
@@ -16,11 +16,7 @@ class RomKanConverter:
         
     @cached_property
     def symbolMaps(self):
-        """ Return the maps of symbols that should be converted """
-        maps = [DOUBLE_CONS_HIRAGANA_MAP] if 'っ' not in self.symbols else []
-        maps.extend([self._process_mapping(COMPOUND_HIRAGANA_MAP),
-                     self._process_mapping(HIRAGANA_MAP)])
-        return maps
+        return HIRAGANA_MAP.getMappings(self.symbols)
 
     def _process_mapping(self, mapping):
         """ Return the proper mapping dictionary that will not convert the learned symbols """
