@@ -11,5 +11,4 @@ CONS_HIRAGANA_MAP = {
 }
 COMPOUND_HIRAGANA_MAP = {key+yKana:CONS_HIRAGANA_MAP[key][:-1]+yKanaValue for key in 'きぎしじちにひびぴみ' for yKana, yKanaValue in {'ゃ':'ya', 'ゅ':'yu', 'ょ':'yo'}.items()}
 
-DOUBLE_CONS_HIRAGANA_MAP = {'っ'+key:value[0]+value for key, value in CONS_HIRAGANA_MAP.items()}
-DOUBLE_CONS_COMPOUND_HIRAGANA_MAP = {'っ'+key:value[0]+value for key, value in COMPOUND_HIRAGANA_MAP.items()}
+DOUBLE_CONS_HIRAGANA_MAP = {'っ'+key:value[0]+key for key, value in CONS_HIRAGANA_MAP.items()}
