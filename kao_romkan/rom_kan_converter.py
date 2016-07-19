@@ -1,4 +1,4 @@
-from .symbols import HIRAGANA_MAP
+from .symbols import HIRAGANA_MAP, COMPOUND_HIRAGANA_MAP
 
 from cached_property import cached_property
 from kao_symbols import convert
@@ -17,5 +17,9 @@ class RomKanConverter:
     @cached_property
     def symbolMap(self):
         """ Return the map of symbols that should be converted """
-        return {key:value for key, value in HIRAGANA_MAP.items() if key not in self.symbols}
+        map = {}
+        if {'ゃ', 'ゅ', 'ょ'} & self.symbols:
+            map.update({key:value for key, value in COMPOUND_HIRAGANA_MAP.items() if key[0] not in self.symbols or key[1] not in self.symbols})
+        map.update({key:value for key, value in HIRAGANA_MAP.items() if key not in self.symbols})
+        return map
         
