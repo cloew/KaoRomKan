@@ -17,9 +17,12 @@ class RomKanConverter:
     @cached_property
     def symbolMaps(self):
         """ Return the maps of symbols that should be converted """
-        maps = [{key:value for key, value in DOUBLE_CONS_COMPOUND_HIRAGANA_MAP.items() if not set(key).issubset(self.symbols)},
-                {key:value for key, value in DOUBLE_CONS_HIRAGANA_MAP.items() if not set(key).issubset(self.symbols)},
-                {key:value for key, value in COMPOUND_HIRAGANA_MAP.items() if not set(key).issubset(self.symbols)},
-                {key:value for key, value in HIRAGANA_MAP.items() if key not in self.symbols}]
+        maps = [self._process_mapping(DOUBLE_CONS_COMPOUND_HIRAGANA_MAP),
+                self._process_mapping(DOUBLE_CONS_HIRAGANA_MAP),
+                self._process_mapping(COMPOUND_HIRAGANA_MAP),
+                self._process_mapping(HIRAGANA_MAP)]
         return maps
-        
+
+    def _process_mapping(self, mapping):
+        """ Return the proper mapping dictionary that will not convert the learned symbols """
+        return {key:value for key, value in mapping.items() if not set(key).issubset(self.symbols)}
