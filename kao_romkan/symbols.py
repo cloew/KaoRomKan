@@ -9,7 +9,7 @@ CONS_HIRAGANA_MAP = {
     'こ':'ko', 'ご':'go', 'そ':'so',  'ぞ':'zo', 'と':'to',  'ど':'do', 'の':'no', 'ほ':'ho', 'ぼ':'bo', 'ぽ':'po', 'も':'mo', 'よ':'yo',
 }
 
-HIRAGANA_MAP = KanaMap(_HIRAGANA_MAP, CONS_HIRAGANA_MAP, iChars='きぎしじちにひびぴみ', yMappings={'ゃ':'ya', 'ゅ':'yu', 'ょ':'yo'}, doubleChar='っ')
+HIRAGANA_MAP = KanaMap(_HIRAGANA_MAP, CONS_HIRAGANA_MAP, yIChars='きぎにひびぴみ', otherIChars='しじち', yMappings={'ゃ':'ya', 'ゅ':'yu', 'ょ':'yo'}, doubleChar='っ')
 
 # KATAKANA_MAP = {'ア':'a', 'イ':'i', 'ウ':'u', 'エ':'e', 'オ':'o', 'ッ':"'", 'ヲ':'wo', 'ン':'n'}
 # CONS_KATAKANA_MAP = {

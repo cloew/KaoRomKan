@@ -2,13 +2,14 @@
 class KanaMap:
     """ Represents a Mapping of Kana to Roman Characters """
     
-    def __init__(self, normalMapping, consonants, *, iChars, yMappings, doubleChar):
+    def __init__(self, normalMapping, consonants, *, yIChars, otherIChars, yMappings, doubleChar):
         """ Initialize with any normal Mappings the Mapping of all consonant characters that can be doubled, 
             the characters that end in i sounds, the y Character Mappings and the double COnsonant Character """
         self.normalMapping = normalMapping
         self.doubleChar = doubleChar
         
-        self.compoundMapping = {key+yKana:consonants[key][:-1]+yKanaValue for key in iChars for yKana, yKanaValue in yMappings.items()}
+        self.compoundMapping = {key+yKana:consonants[key][:-1]+yKanaValue for key in yIChars for yKana, yKanaValue in yMappings.items()}
+        self.compoundMapping.update({key+yKana:consonants[key][:-1]+yKanaValue[-1] for key in otherIChars for yKana, yKanaValue in yMappings.items()})
         self.doubleConsonantMapping = {doubleChar+key:value[0]+key for key, value in consonants.items()}
         self.normalMapping.update(consonants)
         
