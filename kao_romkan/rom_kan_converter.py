@@ -1,4 +1,4 @@
-from .symbols import HIRAGANA_MAP
+from .symbols import HIRAGANA_MAP, KATAKANA_MAP
 
 from cached_property import cached_property
 from kao_symbols import convert
@@ -16,8 +16,4 @@ class RomKanConverter:
         
     @cached_property
     def symbolMaps(self):
-        return HIRAGANA_MAP.getMappings(self.symbols)
-
-    def _process_mapping(self, mapping):
-        """ Return the proper mapping dictionary that will not convert the learned symbols """
-        return {key:value for key, value in mapping.items() if not set(key).issubset(self.symbols)}
+        return HIRAGANA_MAP.getMappings(self.symbols) + KATAKANA_MAP.getMappings(self.symbols)
