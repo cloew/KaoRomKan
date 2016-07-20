@@ -2,7 +2,7 @@
 class KanaMap:
     """ Represents a Mapping of Kana to Roman Characters """
     
-    def __init__(self, normalMapping, consonants, *, yIChars, otherIChars, yMappings, doubleChar):
+    def __init__(self, normalMapping, consonants, *, yIChars, otherIChars, yMappings, doubleChar, extras=[]):
         """ Initialize with any normal Mappings the Mapping of all consonant characters that can be doubled, 
             the characters that end in i sounds, the y Character Mappings and the double COnsonant Character """
         self.normalMapping = normalMapping
@@ -13,9 +13,12 @@ class KanaMap:
         self.doubleConsonantMapping = {doubleChar+key:value[0]+key for key, value in consonants.items()}
         self.normalMapping.update(consonants)
         
+        self.extras = extras
+        
     def getMappings(self, symbols):
         """ Return the Mappings to use given the symbols that should not be converted """
         maps = [self.doubleConsonantMapping] if self.doubleChar not in symbols else []
+        maps.extend(self._process_mapping(extra, symbols) for extra in self.extras)
         maps.extend([self._process_mapping(self.compoundMapping, symbols),
                      self._process_mapping(self.normalMapping, symbols)])
         return maps

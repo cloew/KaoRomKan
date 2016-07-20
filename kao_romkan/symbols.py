@@ -19,4 +19,11 @@ CONS_KATAKANA_MAP = {
     'ケ':'ke', 'ゲ':'ge', 'セ':'se', 'ゼ':'ze', 'テ':'te',  'デ':'de', 'ネ':'ne', 'ヘ':'he', 'ベ':'be', 'ペ':'pe', 'メ':'me',
     'コ':'ko', 'ゴ':'go', 'ソ':'so',  'ゾ':'zo', 'ト':'to',  'ド':'do', 'ノ':'no', 'ホ':'ho', 'ボ':'bo', 'ポ':'po', 'モ':'mo', 'ヨ':'yo',
 }
-KATAKANA_MAP = KanaMap(_KATAKANA_MAP, CONS_KATAKANA_MAP, yIChars='キギニヒビピミ', otherIChars='シジチ', yMappings={'ャ':'ya', 'ュ':'yu', 'ョ':'yo'}, doubleChar='ッ')
+ADDT_SOUNDS = [{
+    'ヴァ':'va', 'ファ':'fa',
+    'ヴィ':'vi', 'ウィ':'wi', 'フィ':'fi', 'ディ':'di', 'ティ':'ti',
+    'ドゥ':'du', 'トゥ':'tu',
+    'ヴェ':'ve', 'ウェ':'we', 'フェ':'fe', 'チェ':'che', 'ジェ':'je', 'シェ':'she',
+    'ヴォ':'vo', 'ウォ':'wo',	'フォ':'fo'
+}, {'ヴ':'vu'}]
+KATAKANA_MAP = KanaMap(_KATAKANA_MAP, CONS_KATAKANA_MAP, yIChars='キギニヒビピミ', otherIChars='シジチ', yMappings={'ャ':'ya', 'ュ':'yu', 'ョ':'yo'}, doubleChar='ッ', extras=ADDT_SOUNDS)
