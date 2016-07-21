@@ -10,9 +10,14 @@ class RomKanConverter:
         """ Initialize with the Symbols the User has learned """
         self.symbols = set(symbols)
         
-    def convert(self, word):
+    def convert(self, word, readings={}):
         """ Convert the given Word """
-        return convert(word, self.symbolMaps)
+        readingsMap = self.processReadings(readings)
+        return convert(word, [readingsMap] + self.symbolMaps)
+        
+    def processReadings(self, readings):
+        """ Process the Readings to return the mapping to use for conversion """
+        return {key:value for key, value in readings.items() if key not in self.symbols}
         
     @cached_property
     def symbolMaps(self):
