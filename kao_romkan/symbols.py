@@ -9,7 +9,7 @@ CONS_HIRAGANA_MAP = {
     'こ':'ko', 'ご':'go', 'そ':'so',  'ぞ':'zo', 'と':'to',  'ど':'do', 'の':'no', 'ほ':'ho', 'ぼ':'bo', 'ぽ':'po', 'も':'mo', 'ろ':'ro', 'よ':'yo',
 }
 
-HIRAGANA_MAP = KanaMap(_HIRAGANA_MAP, CONS_HIRAGANA_MAP, yIChars='きぎにひびぴみ', otherIChars='しじち', yMappings={'ゃ':'ya', 'ゅ':'yu', 'ょ':'yo'}, doubleChar='っ')
+HIRAGANA_MAP = KanaMap(_HIRAGANA_MAP, CONS_HIRAGANA_MAP, yIChars='きぎにひびぴみり', otherIChars='しじち', yMappings={'ゃ':'ya', 'ゅ':'yu', 'ょ':'yo'}, doubleChar='っ')
 
 _KATAKANA_MAP = {'ア':'a', 'イ':'i', 'ウ':'u', 'エ':'e', 'オ':'o', 'ッ':"'", 'ヲ':'wo', 'ン':'n'}
 CONS_KATAKANA_MAP = {
@@ -26,4 +26,4 @@ ADDT_SOUNDS = [{
     'ヴェ':'ve', 'ウェ':'we', 'フェ':'fe', 'チェ':'che', 'ジェ':'je', 'シェ':'she',
     'ヴォ':'vo', 'ウォ':'wo',	'フォ':'fo'
 }, {'ヴ':'vu'}]
-KATAKANA_MAP = KanaMap(_KATAKANA_MAP, CONS_KATAKANA_MAP, yIChars='キギニヒビピミ', otherIChars='シジチ', yMappings={'ャ':'ya', 'ュ':'yu', 'ョ':'yo'}, doubleChar='ッ', extras=ADDT_SOUNDS)
+KATAKANA_MAP = KanaMap(_KATAKANA_MAP, CONS_KATAKANA_MAP, yIChars='キギニヒビピミリ', otherIChars='シジチ', yMappings={'ャ':'ya', 'ュ':'yu', 'ョ':'yo'}, doubleChar='ッ', extras=ADDT_SOUNDS)
