@@ -17,7 +17,7 @@ class RomKanConverter:
         
     def processReadings(self, readings):
         """ Process the Readings to return the mapping to use for conversion """
-        return {key:value for key, value in readings.items() if key not in self.symbols}
+        return {key:value for key, value in readings.items() if not set(key).issubset(self.symbols)}
         
     @cached_property
     def symbolMaps(self):
